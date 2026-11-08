@@ -16,11 +16,12 @@ jobs:
           java-version: '17'
       - name: Build debug APK
         run: |
-          chmod +x ./gradlew 2>/dev/null || true
-          gradle --version || true
+          
+      - name: Build debug APK
+        run: |
           wget -q https://services.gradle.org/distributions/gradle-8.9-bin.zip -O /tmp/gradle.zip
           unzip -q /tmp/gradle.zip -d /tmp
-          /tmp/gradle-8.9/bin/gradle :app:assembleDebug --no-daemon
+          /tmp/gradle-8.9/bin/gradle :app:assembleDebug --no-daemon --stacktrace
       - uses: actions/upload-artifact@v4
         with:
           name: LifeUKPractice-debug-APK
